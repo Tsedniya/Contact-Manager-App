@@ -18,7 +18,7 @@ const  createContact = (req,res)=>{
 const getContact = (req,res)=>{
     res.status(200).json({message:`Get contacts for ${req.params.id}`});
 }
-
+//updated type
 const updateContact= (req,res)=>{
     res.status(200).json({message:`update contacts for ${req.params.id}`});
 }
