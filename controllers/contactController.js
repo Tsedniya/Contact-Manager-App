@@ -1,6 +1,4 @@
-//@desc Create contact
-//@route get /api/contacts
-//@access public
+
 const getContacts = (req,res) =>{
     res.status(200).json({message:"get all contact"})
 }
