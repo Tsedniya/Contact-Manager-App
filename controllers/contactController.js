@@ -1,9 +1,9 @@
 
-const getContacts = (req,res) =>{
+const getContacts = async(req,res) =>{
     res.status(200).json({message:"get all contact"})
 }
 
-const createContact = (req,res)=>{
+const createContact = async(req,res)=>{
     console.log('the requst body is here', req.body)
     const {name,email,phone} = req.body;
     if (!name || !email || !phone){
@@ -13,15 +13,15 @@ const createContact = (req,res)=>{
     res.status(200).json({message:"create all contacts"});
 };
 
-const getContact = (req,res)=>{
+const getContact = async(req,res)=>{
     res.status(200).json({message:`Get contacts for ${req.params.id}`});
 }
 
-const updateContact= (req,res)=>{
+const updateContact= async(req,res)=>{
     res.status(200).json({message:`update contacts for ${req.params.id}`});
 }
 
-const deleteContact = (req,res)=>{
+const deleteContact = async(req,res)=>{
     res.status(200).json({message:`Delete contacts for ${req.params.id}`});
 }
 
