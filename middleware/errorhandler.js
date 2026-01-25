@@ -1,45 +1,63 @@
-const {constants} = require('../constants');
+const {
+  VALIDATION_ERROR,
+  UNAUTHORIZED,
+  FORBIDDEN,
+  NOT_FOUND,
+  SERVER_ERROR,
+} = require("../constants");
+
 const errorHandler = (err, req, res, next) => {
-  const statusCode = res.statusCode ? res.statusCode : 500;
-  switch (statusCode){
-    case  VALIDATION_ERROR:
-      res.json({
-         title:"Validation Failed",
-         message: err.message,
-         stackTrace: err.stack
+  const statusCode = res.statusCode || 500;
+
+  switch (statusCode) {
+    case VALIDATION_ERROR:
+      res.status(statusCode).json({
+        title: "Validation Failed",
+        message: err.message,
+        stackTrace: err.stack,
       });
       break;
-    case  NOT_FOUND:
-        res.json({
-        title:"Not Found",
+
+    case NOT_FOUND:
+      res.status(statusCode).json({
+        title: "Not Found",
         message: err.message,
-        stackTrace: err.stack
-       });
-     case  FORBIDDEN:
-        res.json({
-        title:" FORBIDDEN",
+        stackTrace: err.stack,
+      });
+      break;
+
+    case FORBIDDEN:
+      res.status(statusCode).json({
+        title: "Forbidden",
         message: err.message,
-        stackTrace: err.stack
-       });
-     case  UNAUTHORIZED:
-        res.json({
-        title:" UNAUTHORIZED",
+        stackTrace: err.stack,
+      });
+      break;
+
+    case UNAUTHORIZED:
+      res.status(statusCode).json({
+        title: "Unauthorized",
         message: err.message,
-        stackTrace: err.stack
-       });
-     case  SERVER_ERROR:
-        res.json({
-        title:" SERVER_ERROR",
+        stackTrace: err.stack,
+      });
+      break;
+
+    case SERVER_ERROR:
+      res.status(statusCode).json({
+        title: "Server Error",
         message: err.message,
-        stackTrace: err.stack
-       });
-    
+        stackTrace: err.stack,
+      });
+      break;
+
     default:
-      console.log("No error all good!")
+      res.status(500).json({
+        title: "Error",
+        message: err.message,
+        stackTrace: err.stack,
+      });
       break;
   }
-  
-
 };
 
 module.exports = errorHandler;
