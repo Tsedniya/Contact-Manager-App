@@ -1,4 +1,4 @@
-This repository is the backend for the Contact Manager App built.
+backend for the Contact Manager App built.
 
 The app implements a simple REST API to manage contacts — create, read, update, and delete — using Node.js and Express.
 
